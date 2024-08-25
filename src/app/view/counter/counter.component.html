@@ -1,0 +1,49 @@
+<div class="w-[26rem] mobile:w-[20rem] flex flex-col gap-y-4">
+  <div id="counter-head"  class="bg-[#fff] bg-opacity-30 backdrop-blur-sm border border-[#fff] border-opacity-20 p-2 rounded-[.625rem]">
+    <h2 class="text-[#fff] font-bold text-[2.125rem] font-bungee text-center">
+      COUNTER
+    </h2>
+  </div>
+  <main class="bg-[#fff] bg-opacity-30 backdrop-blur-sm border border-[#fff] border-opacity-20 shadow-lg rounded-[.625rem] flex justify-center items-center flex-col p-4 gap-y-6 relative">
+
+    <div id="dots" class="absolute top-3 right-3 flex flex-col gap-3 p-2">
+      <div class="bg-cello size-[0.5rem] rounded-full  "></div>
+      <div class="bg-wellread size-[0.5rem] rounded-full  "></div>
+      <div class="bg-pavlova size-[0.5rem] rounded-full  "></div>
+    </div>
+
+
+    <section class="flex gap-7 px-6 w-[7rem] items-center justify-center border border-mercury bg-[#fff] bg-opacity-20 backdrop-blur-sm rounded-md shadow-inner">
+      <button title="reset" (click)="reset()" class="hover:animate-spin">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5 stroke-[#fff]">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
+        </svg>
+      </button>
+      <div title="count" class="text-center">
+        <p class="font-medium text-[2.25rem] text-center text-[#fff]">
+          {{ count }}
+        </p>
+      </div>
+    </section>
+    <section class="flex items-center justify-center gap-4">
+      <label for="initialValue" class="text-[#fff]">Enter count:</label>
+      <input
+        class="focus:outline-none p-2 rounded-md w-10 bg-[#fff] bg-opacity-20 backdrop-blur-sm text-[#fff] shadow-inner"
+        id="initialValue"
+        type="number"
+        [(ngModel)]="initialValue"
+        (blur)="setInitialValue()"
+        (keydown.enter)="setInitialValue()"
+      />
+    </section>
+    <section class="flex gap-10">
+      <app-button [buttonTitle]="'increase'" [buttonName]="' + INCREASE '"
+      [buttonEvent]="increment.bind(this)" [customClass]="'bg-wellread '"/>
+      <app-button [buttonTitle]="'decrease'" [buttonName]="' - DECREASE '"
+      [buttonEvent]="decrement.bind(this)" [customClass]="'bg-william '"/>
+      <app-button [buttonTitle]="'undo'" [buttonName]="'UNDO'"
+      [buttonEvent]="undo.bind(this)" [customClass]="'bg-cello '"
+  ></app-button>
+    </section>
+  </main>
+</div>
